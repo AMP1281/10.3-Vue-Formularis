@@ -162,7 +162,8 @@ input:focus{
     font-size:1em;
 }
 span{
-   float:inline-start;
+    float:inline-start;
+    color: rgb(179, 10, 10);
 }
 
 

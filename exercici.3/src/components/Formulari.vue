@@ -24,13 +24,13 @@
 
             <span v-for="errore in aemail" :key="errore.id"> {{errore}} </span><br><br>
 
-            <label for="lpasw">E.mail:</label><br>
-            <input type="password" id="lpasw" name="password" v-model.trim="password"><br>
+            <label for="lpasw">Password:</label><br>
+            <input type="text" id="lpasw" name="password" v-model.trim="password"><br>
 
             <span v-for="errorp in apasw" :key="errorp.id"> {{errorp}} </span><br><br>
 
-            <label for="lconfirm">E.mail:</label><br>
-            <input type="text" id="lconfirm" name="confirm" v-model.trim="email"><br>
+            <label for="lconfirm">Confirmar Password:</label><br>
+            <input type="text" id="lconfirm" name="confirm" v-model.trim="confirm"><br>
 
             <span v-for="errorcp in aconfirm" :key="errorcp.id"> {{errorcp}} </span><br><br>
 
@@ -52,6 +52,8 @@ export default {
             mobil:'',
             codiPostal:'',
             email:'',
+            password:'',
+            confirm:'',
        
       
             eobligatori:"Aquest camp es obligatori. ",
@@ -60,6 +62,7 @@ export default {
             enumeros:"Aquest camp nomès pot contenir números.",
             eEmail:"Introdueix una direcció de correu electrónic vàlida.",
             emajus:"Ha de contenir majúscules i minúsvules. ",
+            econfirm: "Ha de coincidir amb password. ",
        
         
             anom:[],
@@ -106,16 +109,21 @@ export default {
             this.apasw=[];
                 if(!this.password) {
                     this.apasw.push(this.eobligatori);
-                if (this.password.length < 6 || this.password.length > 13){
+                }if (this.password.length < 6 || this.password.length > 13){
                     this.apasw.push(this.enom);
-                if(/[a-z][A-Z]/.test(this.password)){
+                }if (!/[a-z][A-Z]/.test(this.password)){
                     this.apasw.push(this.emajus);
                 }
-                
+            this.aconfirm=[];
+                if(!this.confirm) {
+                    this.aconfirm.push(this.eobligatori);
+                }if (this.password != this.confirm){
+                    this.aconfirm.push(this.econfirm);
+                }
 
-    },
+    }
   }
-};
+}
 
 
 </script>
@@ -161,7 +169,7 @@ body{
     box-shadow:2px 2px 10px 2px rgba(65, 64, 64, 0.533);
 }
 form{
-    width: 350px;
+    width: 500px;
 }
 label{
     color:rgb(112, 112, 112);
@@ -187,6 +195,7 @@ input:focus{
 }
 span{
    float:inline-start;
+   color: rgb(179, 10, 10);
 }
 
 
