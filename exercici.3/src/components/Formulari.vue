@@ -1,6 +1,7 @@
 <template>
 
     <div class="centrar">
+
         <form @submit.prevent="Validar" novalidate="true">
 
             <label for="fname">Nom:</label><br>
@@ -23,9 +24,20 @@
 
             <span v-for="errore in aemail" :key="errore.id"> {{errore}} </span><br><br>
 
+            <label for="lpasw">E.mail:</label><br>
+            <input type="password" id="lpasw" name="password" v-model.trim="password"><br>
+
+            <span v-for="errorp in apasw" :key="errorp.id"> {{errorp}} </span><br><br>
+
+            <label for="lconfirm">E.mail:</label><br>
+            <input type="text" id="lconfirm" name="confirm" v-model.trim="email"><br>
+
+            <span v-for="errorcp in aconfirm" :key="errorcp.id"> {{errorcp}} </span><br><br>
+
             <input type="submit" value="Validar" class="boton"><br><br>
 
         </form>
+
     </div>
 
 </template>
@@ -47,12 +59,15 @@ export default {
             enomnumeros:"El seu nom no pot contenir números.",
             enumeros:"Aquest camp nomès pot contenir números.",
             eEmail:"Introdueix una direcció de correu electrónic vàlida.",
+            emajus:"Ha de contenir majúscules i minúsvules. ",
        
         
             anom:[],
             amobil:[],
             acodiPostal:[],
             aemail:[],
+            apasw:[],
+            aconfirm:[],
        
             regExpemail: /[\w._-]+@[\wñ._-]+(?:\.[\w]+)+/,
       }
