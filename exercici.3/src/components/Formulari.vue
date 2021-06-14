@@ -111,6 +111,7 @@ export default {
                 if(/[a-z][A-Z]/.test(this.password)){
                     this.apasw.push(this.emajus);
                 }
+                
 
     },
   }
