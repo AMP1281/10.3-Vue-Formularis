@@ -55,7 +55,7 @@ export default {
        
       
             eobligatori:"Aquest camp es obligatori. ",
-            enom:"El seu nom ha de contenir entre 6 i 13 caràcters.",
+            enom:"Aquest camp ha de contenir entre 6 i 13 caràcters.",
             enomnumeros:"El seu nom no pot contenir números.",
             enumeros:"Aquest camp nomès pot contenir números.",
             eEmail:"Introdueix una direcció de correu electrónic vàlida.",
@@ -102,6 +102,14 @@ export default {
                     this.aemail.push(this.eobligatori);
                 } else if (!this.regExpemail.test(this.email)) {
                     this.aemail.push(this.eEmail);
+                }
+            this.apasw=[];
+                if(!this.password) {
+                    this.apasw.push(this.eobligatori);
+                if (this.password.length < 6 || this.password.length > 13){
+                    this.apasw.push(this.enom);
+                if(/[a-z][A-Z]/.test(this.password)){
+                    this.apasw.push(this.emajus);
                 }
 
     },
