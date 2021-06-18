@@ -4,31 +4,37 @@
 
         <form @submit.prevent="Validar" novalidate="true">
 
+            <!--Nom-->
             <label for="fname">Nom:</label><br>
             <input type="text" id="fname" name="nom" v-model.trim="nom"><br>
 
             <span v-for="errorn in anom" :key="errorn.id"> {{errorn}} </span><br><br>
 
+             <!--Telèfon mòbil-->
             <label for="lmobil">Telèfon mòbil:</label><br>
             <input type="tel" id="lmobil" name="mobil" v-model.trim.number="mobil"><br>
 
             <span v-for="errorm in amobil" :key="errorm.id"> {{errorm}} </span><br><br>
 
+            <!--Codi Postal-->
             <label for="lcodiPostal">Codi Postal:</label><br>
             <input type="text" id="lcodiPostal" name="codiPostal" v-model.trim.number="codiPostal"><br>
 
             <span v-for="errorc in acodiPostal" :key="errorc.id"> {{errorc}} </span><br><br>
 
+             <!--e.mail-->
             <label for="lemail">E.mail:</label><br>
             <input type="email" id="lemail" name="email" v-model.trim="email"><br>
 
             <span v-for="errore in aemail" :key="errore.id"> {{errore}} </span><br><br>
 
+             <!--Password-->
             <label for="lpasw">Password:</label><br>
             <input type="text" id="lpasw" name="password" v-model.trim="password"><br>
 
             <span v-for="errorp in apasw" :key="errorp.id"> {{errorp}} </span><br><br>
 
+             <!--Confirmar Password-->
             <label for="lconfirm">Confirmar Password:</label><br>
             <input type="text" id="lconfirm" name="confirm" v-model.trim="confirm"><br>
 
@@ -47,7 +53,6 @@ export default {
   name: 'Formulari',
   data(){
       return{
-        
             nom:'',
             mobil:'',
             codiPostal:'',
@@ -55,7 +60,6 @@ export default {
             password:'',
             confirm:'',
        
-      
             eobligatori:"Aquest camp es obligatori. ",
             enom:"Aquest camp ha de contenir entre 6 i 13 caràcters.",
             enomnumeros:"El seu nom no pot contenir números.",
@@ -64,7 +68,6 @@ export default {
             emajus:"Ha de contenir majúscules i minúsvules. ",
             econfirm: "Ha de coincidir amb password. ",
        
-        
             anom:[],
             amobil:[],
             acodiPostal:[],
@@ -73,55 +76,87 @@ export default {
             aconfirm:[],
        
             regExpemail: /[\w._-]+@[\wñ._-]+(?:\.[\w]+)+/,
+
+            a:'',
+            b:'',
+            c:'',
       }
   },
   methods:{
-
     Validar(){
 
             this.anom=[];
-                if(!this.nom) {
-                    this.anom.push(this.eobligatori);
-                } if (this.nom.length < 6 || this.nom.length > 13){
-                    this.anom.push(this.enom);
-                } if(/[0-9]/.test(this.nom)){
-                    this.anom.push(this.enomnumeros);
-                }
-            this.amobil=[];
-                if(!this.mobil) {
-                    this.amobil.push(this.eobligatori);
-                } else if(isNaN(this.mobil)){
-                    this.amobil.push(this.enumeros);
-                }
+            this.amobil=[],
+            this.acodiPostal=[],
+            this.aemail=[],
+            this.apasw=[],
+            this.aconfirm=[],
 
-            this.acodiPostal=[];
-                if(!this.codiPostal) {
-                    this.acodiPostal.push(this.eobligatori);
-                } else if(isNaN(this.codiPostal)){
-                    this.acodiPostal.push(this.enumeros);
-                }
-            this.aemail=[];
-                if(!this.email) {
-                    this.aemail.push(this.eobligatori);
-                } else if (!this.regExpemail.test(this.email)) {
-                    this.aemail.push(this.eEmail);
-                }
-            this.apasw=[];
-                if(!this.password) {
-                    this.apasw.push(this.eobligatori);
-                }if (this.password.length < 6 || this.password.length > 13){
-                    this.apasw.push(this.enom);
-                }if (!/[a-z][A-Z]/.test(this.password)){
-                    this.apasw.push(this.emajus);
-                }
-            this.aconfirm=[];
-                if(!this.confirm) {
-                    this.aconfirm.push(this.eobligatori);
-                }if (this.password != this.confirm){
-                    this.aconfirm.push(this.econfirm);
-                }
+            this.obligatori(this.nom,this.anom);
+            this.obligatori(this.mobil,this.amobil);
+            this.obligatori(this.codiPostal,this.acodiPostal);
+            this.obligatori(this.email,this.aemail);
+            this.obligatori(this.pasw,this.apasw);
+            this.obligatori(this.confirm,this.aconfirm);
 
-    }
+            this.minMax(this.nom,this.anom);
+            this.minMax(this.password,this.apasw);
+
+            this.mayMin(this.password,this.apasw);
+
+            this.lletres(this.nom,this.anom);
+
+            this.numeros(this.mobil,this.amobil);
+            this.numeros(this.codiPostal,this.acodiPostal);
+
+            this.mail(this.email,this.aemail);
+
+            this.igual(this.email,this.confirm, this.aconfirm)
+            },
+
+            //Validar camps obligatoris
+            obligatori(a,b){
+                if(!a){
+                    b.push(this.eobligatori);
+                } 
+            },
+            //Validar min max dígits
+            minMax(a,b){ 
+                if (a.length < 6 || a.length > 13){ 
+                    b.push(this.enom);
+                }
+            },
+            //Validar mayuscules i minuscules obligatories
+            mayMin(a,b){
+                if (!/[a-z][A-Z]/.test(a)){
+                    b.push(this.emajus);
+                }
+            },
+            //Validar que contingui lletres
+            lletres(a,b){
+                if(/[0-9]/.test(a)){
+                    b.push(this.enomnumeros);
+                }
+            },
+            //Validar que contingui números
+            numeros(a,b){
+                if(isNaN(a)){
+                    b.push(this.enumeros);
+                }
+            },
+            //Validar format e.mail
+            mail(a,b){
+                if (!this.regExpemail.test(a)) {
+                    b.push(this.eEmail);
+                }
+            },
+            //Validar que dos inputs siguin identics
+            igual(a,b,c){
+                if(c != a){
+                    b.push(this.econfirm);
+                }
+            },
+            
   }
 }
 
@@ -169,10 +204,11 @@ body{
     box-shadow:2px 2px 10px 2px rgba(65, 64, 64, 0.533);
 }
 form{
-    width: 500px;
+    width: 550px;
 }
 label{
     color:rgb(112, 112, 112);
+    font-weight: bold;
 }
 input{
     outline:none;
@@ -192,6 +228,7 @@ input:focus{
     padding:0.7em;
     letter-spacing: 0.10em;
     font-size:1em;
+    font-weight: bold;
 }
 span{
    float:inline-start;
