@@ -1,8 +1,10 @@
 <template>
 
+<div>
+
     <div class="container vh-100 d-flex justify-content-center align-items-center align-self-center">
 
-        <form @submit.prevent="validar" novalidate="true" class="w-75 bg-light border border-secondary p-5 rounded">
+        <form @submit.prevent="" novalidate="true" class="w-75 bg-light border border-secondary p-5 rounded">
             
             <Nom :nombre.sync="nombre" label='Nom:' type='text' id='fname' @nombreOk="nOk=$event"/>
 
@@ -16,12 +18,26 @@
 
             <Confirm :confirm.sync="confirm" label='Confirmar Password:' type='text' id='lconfirm' @confirmOk="cOk=$event"/>
 
-        <button type="submit" class="btn btn-primary btn-block mt-5 rounded-pill" :class="{disabled: enableSubmitBtn}" >Validar</button>
+        <button type="submit" @click="openModal()" data-toggle="modal" data-target="#Modal" class="btn btn-primary btn-block mt-5 rounded-pill" :class="{disabled: enableSubmitBtn}" >Validar</button>
 
         </form>
-    
+
+        <Modal v-if="showModal"
+            
+            :nombre= 'nombre'
+            :mobil= 'mobil'
+            :codi= 'codi'
+            :mail= 'mail'
+            :psw= 'psw'
+            :confirm= 'confirm'>
+
+        ></Modal>
 
     </div>
+
+
+
+</div>
 
         <!-- <form>-->
             <!-- -->
@@ -131,6 +147,7 @@ import Codi from './Codi.vue'
 import Mail from './Mail.vue'
 import Psw from './Psw.vue'
 import Confirm from './Confirm.vue'
+import Modal from './Modal.vue'
 
 
 export default {
@@ -143,7 +160,8 @@ export default {
         Codi,
         Mail,
         Psw,
-        Confirm
+        Confirm,
+        Modal
     },
 
     data(){
@@ -163,14 +181,21 @@ export default {
             cOk:'',
 
             isActive: true,
+
+            showModal: true,
+
             }
     },
-    methods:{
-        validar(){
 
-            this.$root.$emit('validar');
-        }
+    methods:{
+        //validar(){
+        //    this.$root.$emit('validar');
+        //},
+        openModal(){
+            this.showModal = true;
+        },
     },
+
     computed:{
         enableSubmitBtn() {
             if (this.nombre.length === 0 ||
@@ -195,7 +220,7 @@ export default {
             }
         }
     },
-    
+
 }
 
 

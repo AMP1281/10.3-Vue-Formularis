@@ -126,5 +126,27 @@ export default {
         },
     },
 
+    created(){
+
+        this.$root.$on('validar',() => {
+
+            /*
+            this.amobil=[];
+
+           if(this.mobil==""){
+                this.amobil.push("Aquest camp es obligatori");
+           }
+           if(this.mobil.length < 6 || this.mobil.length > 13){ 
+                this.amobil.push("Aquest camp ha de contenir entre 6 i 13 caràct");
+           }
+           if(/[0-9]/.test(this.mobil)){ 
+                this.amobil.push("El seu nom no pot contenir números.");
+           } */
+
+            this.$emit('emobil',this.amobil);
+
+        });
+    }
+
 }
 </script>
