@@ -13,16 +13,8 @@
 
             <small :class="{'text-secondary':obligGris, 'text-danger':obligVermell}">* Requerit. </small>
             <small :class="{'text-secondary':caracGris, 'text-danger':caracVermell}">Mínim de 6 i màxim de 13 dígits. </small>
-            <small :class="{'text-secondary':numGris, 'text-danger':numVermell}">Ha de contenir majúscules i minúsvules. </small>
-        
-        
-        <!--<li v-for="(x, i) in lpsw" :key="i">  {{ x }} </li>-->
-
-        <!--
-        <p v-if="!nombre">Aquest camp es obligatori</p>
-        <p v-if="nombre.length < 6 || nombre.length > 13">Aquest camp ha de contenir entre 6 i 13 caràcters.</p>
-        <p v-if="/[0-9]/.test(nombre)">El seu nom no pot contenir números.</p> 
-        -->
+            <small :class="{'text-secondary':numGris, 'text-danger':numVermell}">Ha de contenir minúscules. </small>
+            <small :class="{'text-secondary':mayGris, 'text-danger':mayVermell}">Ha de contenir majúscules. </small>
 
     </div>
 
@@ -67,6 +59,9 @@ export default {
 
             numGris:true,
             numVermell:false,
+
+            mayGris:true,
+            mayVermell:false,
         }
     },
 
@@ -84,7 +79,7 @@ export default {
                 this.obligGris=true;
                 this.obligVermell=false;
             }
-            if(this.psw.length < 5 || this.psw.length > 14){ 
+            if(this.psw.length < 6 || this.psw.length > 13){ 
                 this.lpsw.push("Aquest camp ha de contenir entre 6 i 13 caràcters.");
                 this.caracGris=false;
                 this.caracVermell=true;
@@ -92,13 +87,21 @@ export default {
                 this.caracGris=true;
                 this.caracVermell=false;
             }
-            if(!/[A-z]/.test(this.psw)){
-                this.lpsw.push("Aquest camp Ha de contenir majúscules i minúsvules.");
+            if(!/[a-z]/.test(this.psw)){
+                this.lpsw.push("Aquest camp Ha de contenir minúscules.");
                 this.numGris=false;
                 this.numVermell=true;
             }else{
                 this.numGris=true;
                 this.numVermell=false;
+            }
+            if(!/[A-Z]/.test(this.psw)){
+                this.lpsw.push("Aquest camp Ha de contenir majúscules.");
+                this.mayGris=false;
+                this.mayVermell=true;
+            }else{
+                this.mayGris=true;
+                this.mayVermell=false;
             }
             //Envio campo password a Confirm para comparar
             this.$root.$emit('iguales',this.psw);

@@ -14,15 +14,6 @@
             <small :class="{'text-secondary':caracGris, 'text-danger':caracVermell}">10 dígits. </small>
             <small :class="{'text-secondary':numGris, 'text-danger':numVermell}">Nomès números. </small>
 
-        <!--opció mostrar array-->
-        <!--<li v-for="(x, i) in lmobil" :key="i">  {{ x }} </li>-->
-
-        <!--
-        <p v-if="!nombre">Aquest camp es obligatori</p>
-        <p v-if="nombre.length < 6 || nombre.length > 13">Aquest camp ha de contenir entre 6 i 13 caràcters.</p>
-        <p v-if="/[0-9]/.test(nombre)">El seu nom no pot contenir números.</p> 
-        -->
-
     </div>
 
 </template>
@@ -125,28 +116,6 @@ export default {
             }
         },
     },
-
-    created(){
-
-        this.$root.$on('validar',() => {
-
-            /*
-            this.amobil=[];
-
-           if(this.mobil==""){
-                this.amobil.push("Aquest camp es obligatori");
-           }
-           if(this.mobil.length < 6 || this.mobil.length > 13){ 
-                this.amobil.push("Aquest camp ha de contenir entre 6 i 13 caràct");
-           }
-           if(/[0-9]/.test(this.mobil)){ 
-                this.amobil.push("El seu nom no pot contenir números.");
-           } */
-
-            this.$emit('emobil',this.amobil);
-
-        });
-    }
 
 }
 </script>

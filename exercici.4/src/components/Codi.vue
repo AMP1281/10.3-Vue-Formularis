@@ -12,11 +12,7 @@
             <small :class="{'text-secondary':obligGris, 'text-danger':obligVermell}">* Requerit. </small>
             <small :class="{'text-secondary':caracGris, 'text-danger':caracVermell}">5 dígits </small>
             <small :class="{'text-secondary':numGris, 'text-danger':numVermell}">Nomès números. </small>
-
-
-        <!--<li v-for="(x, i) in lcodi" :key="i">  {{ x }} </li>-->
         
-
     </div>
 
 </template>
@@ -112,6 +108,7 @@ export default {
     computed:{
 
         actualizar:{
+            
             get(){
                 return this.codi
             },  

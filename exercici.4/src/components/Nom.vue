@@ -13,16 +13,6 @@
             <small :class="{'text-secondary':obligGris, 'text-danger':obligVermell}">* Requerit. </small>
             <small :class="{'text-secondary':caracGris, 'text-danger':caracVermell}">Mínim de 6 i màxim de 13 dígits. </small>
             <small :class="{'text-secondary':numGris, 'text-danger':numVermell}">Nomès text </small>
-        
-        <!--opció mostrar array-->
-        <!--<li v-for="(x, i) in lnom" :key="i">  {{ x }} </li>-->
-
-        <!--
-        <p v-if="!nombre">Aquest camp es obligatori</p>
-        <p v-if="nombre.length < 6 || nombre.length > 13">Aquest camp ha de contenir entre 6 i 13 caràcters.</p>
-        <p v-if="/[0-9]/.test(nombre)">El seu nom no pot contenir números.</p>
-        -->
-        
 
     </div>
 

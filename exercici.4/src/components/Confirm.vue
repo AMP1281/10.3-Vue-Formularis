@@ -14,7 +14,6 @@
             <small :class="{'text-secondary':obligGris, 'text-danger':obligVermell}">* Requerit. </small>
             <small :class="{'text-secondary':caracGris, 'text-danger':caracVermell}">Ha de coincidir amb password. </small>
 
-        <!--<li v-for="(x, i) in lconfirm" :key="i">  {{ x }} </li>-->
 
     </div>
 
@@ -44,6 +43,7 @@ export default {
 
     data(){
         return{
+            
             aconfirm:[],
             lconfirm:[],
 

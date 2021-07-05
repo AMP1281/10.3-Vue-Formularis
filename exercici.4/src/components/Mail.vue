@@ -13,10 +13,6 @@
 
             <small :class="{'text-secondary':obligGris, 'text-danger':obligVermell}">* Requerit. </small>
             <small :class="{'text-secondary':caracGris, 'text-danger':caracVermell}">Introdueix una direcció de correu electrónic vàlida. </small>
-        
-        
-        <!--<li v-for="(x, i) in lmail" :key="i">  {{ x }} </li>-->
-        
 
     </div>
 
