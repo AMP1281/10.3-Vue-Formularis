@@ -3,7 +3,7 @@
     <div>
 
 
-        <div class="input-group mt-4">
+        <div class="input-group">
 
             <span class="input-group-text font-weight-bold alert-primary">{{ label }}</span>
 

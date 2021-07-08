@@ -3,7 +3,7 @@
     <div>
 
 
-        <div class="input-group mt-4">
+        <div class="input-group">
 
             <span class="input-group-text font-weight-bold alert-primary">{{ label }}</span>
                 <input v-model="actualizar" type="text" class= 'form-control' @blur="inline" :class="{ active: isActive, 'is-valid':verde , 'is-invalid': rojo }"/>

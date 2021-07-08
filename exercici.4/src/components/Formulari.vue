@@ -5,7 +5,25 @@
     <div class="container vh-100 d-flex justify-content-center align-items-center align-self-center">
 
         <form class="w-75 bg-light border border-secondary p-5 rounded">
-            
+
+            <Test
+             :nombre.sync="nombre" labelNom='Nom:'
+             :mobil.sync="mobil" labelMobil='Mobil:'
+             :codi.sync="codi" labelCodi='Codi Postal:'
+             :mail.sync="mail" labelMail='E.mail:'
+             :psw.sync="psw" labelPassword='Password:'
+             :confirm.sync="confirm" labelConfirm='Confirmar Password:'
+             @nombreOk="nOk=$event"
+             @mobilOk="mOk=$event"
+             @codiOk="cpOk=$event"
+             @mailOk="eOk=$event"
+             @pswOk="pOk=$event"
+             @confirmOk="cOk=$event"
+             />
+
+
+              <!-- type='text' id='fname' @nombreOk="nOk=$event"/> -->
+<!-- 
             <Nom :nombre.sync="nombre" label='Nom:' type='text' id='fname' @nombreOk="nOk=$event"/>
 
             <Mobil :mobil.sync="mobil" label='Telèfon mòbil:' type='text' id='lmobil' @mobilOk="mOk=$event"/>
@@ -16,7 +34,7 @@
 
             <Psw :psw.sync="psw" label='Password:' type='password' id='lpasw' @pswOk="pOk=$event"/>
 
-            <Confirm :confirm.sync="confirm" label='Confirmar Password:' type='password' id='lconfirm' @confirmOk="cOk=$event"/>
+            <Confirm :confirm.sync="confirm" label='Confirmar Password:' type='password' id='lconfirm' @confirmOk="cOk=$event"/> -->
         
 
             <button type="submit" @click.prevent="openModal()" data-toggle="modal" data-target="#ModalBootstrap" class="btn btn-primary btn-block mt-5 rounded-pill" :class="{disabled: enableSubmitBtn}">Validar</button>
@@ -45,12 +63,14 @@
 
 <script>
 
-import Nom from './Nom.vue'
-import Mobil from './Mobil.vue'
-import Codi from './Codi.vue'
-import Mail from './Mail.vue'
-import Psw from './Psw.vue'
-import Confirm from './Confirm.vue'
+import Test from './Test.vue'
+
+//import Nom from './Nom.vue'
+//import Mobil from './Mobil.vue'
+//import Codi from './Codi.vue'
+//import Mail from './Mail.vue'
+//import Psw from './Psw.vue'
+//import Confirm from './Confirm.vue'
 import ModalBootstrap from './ModalBootstrap.vue'
 
 
@@ -59,13 +79,14 @@ export default {
 
     components:{
 
-        Nom,
-        Mobil,
-        Codi,
-        Mail,
-        Psw,
-        Confirm,
+        //Nom,
+        //Mobil,
+        //Codi,
+        //Mail,
+        //Psw,
+        //Confirm,
         ModalBootstrap,
+        Test
     },
 
     data(){
@@ -86,9 +107,7 @@ export default {
 
             disabled: true,
 
-
             showModal: false,
-
             }
     },
 
