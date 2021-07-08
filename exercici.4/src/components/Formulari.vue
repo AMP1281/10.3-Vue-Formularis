@@ -82,7 +82,7 @@ export default {
             }
     },
 
-
+    //Desactivo botón hasta que todos los campos esten llenos y Ok(no hay errores en array)
     computed:{
         enableSubmitBtn() {
             if (this.nombre.length === 0 ||
@@ -109,6 +109,7 @@ export default {
 
     },
 
+    //Si el botón no esta ok(todas validaciones ok) no se abre modal
     methods:{
         openModal(){
             if (!this.enableSubmitBtn){

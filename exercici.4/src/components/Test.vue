@@ -1,132 +1,125 @@
 <template>
 <div>
     
-        <!--Nom-->
-        <div class="input-group">
+    <!--Nom-->
+    <div class="input-group">
 
-            <span class="input-group-text font-weight-bold alert-primary">{{ labelNom }}</span>
-             
-            <input v-model="compNom" type="text" class= 'form-control' @blur="inlineN" :class="{ active: isActiveN, 'is-valid':verdeN , 'is-invalid':rojoN }"/>
-        
-                <div class="container position-relative col-md-12" style="height: 0.9em !important;">
+        <span class="input-group-text font-weight-bold alert-primary">{{ labelNom }}</span>
+            
+        <input v-model="compNom" type="text" class= 'form-control' @blur="inlineN" :class="{ active: isActiveN, 'is-valid':verdeN , 'is-invalid':rojoN }"/>
+    
+            <div class="container position-relative col-md-12" style="height: 0.9em !important;">
 
-                    <div class="position-absolute">
+                <div class="position-absolute">
 
-                        <small class="text-danger" v-for="(errorn, i) in lnom" :key="i"> {{ errorn }} </small>
-
-                    </div>
+                    <small class="text-danger" v-for="(errorn, i) in lnom" :key="i"> {{ errorn }} </small>
 
                 </div>
 
-        </div>
-        <!--End Nom-->
+            </div>
 
-        <!--Telefon mòbil-->
-        <div class="input-group mt-4">
+    </div>
+    <!--End Nom-->
 
-            <span class="input-group-text font-weight-bold alert-primary">{{ labelMobil }}</span>
+    <!--Telefon mòbil-->
+    <div class="input-group mt-4">
 
-            <input v-model="compMobil" type="text" class= 'form-control' @blur="inlineM" :class="{ active: isActiveM, 'is-valid':verdeM , 'is-invalid':rojoM }"/>
+        <span class="input-group-text font-weight-bold alert-primary">{{ labelMobil }}</span>
 
-                <div class="container position-relative col-md-12" style="height: 0.9em !important;">
+        <input v-model="compMobil" type="text" class= 'form-control' @blur="inlineM" :class="{ active: isActiveM, 'is-valid':verdeM , 'is-invalid':rojoM }"/>
 
-                    <div class="position-absolute">
+            <div class="container position-relative col-md-12" style="height: 0.9em !important;">
+
+                <div class="position-absolute">
 
                     <small class="text-danger" v-for="(errorm, i) in lmobil" :key="i"> {{ errorm }} </small>
 
-                    </div>
-
                 </div>
 
-        </div>
+            </div>
 
+    </div>
+    <!--End Telefon mòbil-->
 
-        <!--End Telefon mòbil-->
+    <!--Codi postal-->
+    <div class="input-group mt-4">
 
-        <!--Codi postal-->
-        <div class="input-group mt-4">
+        <span class="input-group-text font-weight-bold alert-primary">{{ labelCodi}} </span>
 
-            <span class="input-group-text font-weight-bold alert-primary">{{ labelCodi}} </span>
-
-            <input v-model="compCodi" type="text" class= 'form-control' @blur="inlineCP" :class="{ active: isActiveCP, 'is-valid':verdeCP , 'is-invalid': rojoCP }"/>
-        
+        <input v-model="compCodi" type="text" class= 'form-control' @blur="inlineCP" :class="{ active: isActiveCP, 'is-valid':verdeCP , 'is-invalid': rojoCP }"/>
+    
             <div class="container position-relative col-md-12" style="height: 0.9em !important;">
 
-                    <div class="position-absolute">
+                <div class="position-absolute">
 
                     <small class="text-danger" v-for="(errorcp, i) in lcodi" :key="i"> {{ errorcp }} </small>
 
-                    </div>
-
                 </div>
 
-        </div>
+            </div>
 
+    </div>
+    <!--End Codi postal-->
 
-        <!--End Codi postal-->
+    <!--E.mail-->
+    <div class="input-group mt-4">
 
-        <!--E.mail-->
-        <div class="input-group mt-4">
+        <span class="input-group-text font-weight-bold alert-primary">{{ labelMail }}</span>
 
-            <span class="input-group-text font-weight-bold alert-primary">{{ labelMail }}</span>
+        <input v-model="compEmail" type="text" class= 'form-control' @blur="inlineE" :class="{ active: isActiveE, 'is-valid':verdeE , 'is-invalid': rojoE }"/>
 
-            <input v-model="compEmail" type="text" class= 'form-control' @blur="inlineE" :class="{ active: isActiveE, 'is-valid':verdeE , 'is-invalid': rojoE }"/>
-
-                    <div class="container position-relative col-md-12" style="height: 0.9em !important;">
+                <div class="container position-relative col-md-12" style="height: 0.9em !important;">
 
                     <div class="position-absolute">
 
-            <small class="text-danger" v-for="(errore, i) in lmail" :key="i"> {{ errore }} </small>
+                        <small class="text-danger" v-for="(errore, i) in lmail" :key="i"> {{ errore }} </small>
 
                     </div>
 
                 </div>
 
-        </div>
+    </div>
+    <!--End E.mail-->
 
+    <!--Password-->
+    <div class="input-group mt-4">
 
-
-        <!--End E.mail-->
-
-        <!--Password-->
-        <div class="input-group mt-4">
-
-            <span class="input-group-text font-weight-bold alert-primary">{{ labelPassword }}</span>
+        <span class="input-group-text font-weight-bold alert-primary">{{ labelPassword }}</span>
 
         <input v-model="compPsw" type="text" class= 'form-control' @blur="inlineP" :class="{ active: isActiveP, 'is-valid':verdeP , 'is-invalid': rojoP }"/>
-                    
-                    <div class="container position-relative col-md-12" style="height: 0.9em !important;">
+                
+            <div class="container position-relative col-md-12" style="height: 0.9em !important;">
 
-                    <div class="position-absolute">
+                <div class="position-absolute">
 
-            <small class="text-danger" v-for="(errorp, i) in lpsw" :key="i"> {{ errorp }} </small>
-
-                                </div>
+                    <small class="text-danger" v-for="(errorp, i) in lpsw" :key="i"> {{ errorp }} </small>
 
                 </div>
 
-        </div>
-        <!--End Password-->
+            </div>
 
-        <!--Confirmar Password-->
-        <div class="input-group mt-4">
+    </div>
+    <!--End Password-->
+
+    <!--Confirmar Password-->
+    <div class="input-group mt-4">
 
         <span class="input-group-text font-weight-bold alert-primary">{{ labelConfirm }}</span>
 
         <input v-model="compConf" type="text" class= 'form-control' @blur="inlineC" :class="{ active: isActiveC, 'is-valid':verdeC , 'is-invalid': rojoC }"/>
-                    <div class="container position-relative col-md-12" style="height: 0.9em !important;">
 
-                    <div class="position-absolute">
+            <div class="container position-relative col-md-12" style="height: 0.9em !important;">
 
+                <div class="position-absolute">
 
-            <small class="text-danger" v-for="(errorc, i) in lconfirm" :key="i"> {{ errorc }} </small>
-
-                                            </div>
+                    <small class="text-danger" v-for="(errorc, i) in lconfirm" :key="i"> {{ errorc }} </small>
 
                 </div>
 
-        </div>
-        <!--End Confirmar Password-->
+            </div>
+
+    </div>
+    <!--End Confirmar Password-->
 
 </div>
 
@@ -198,10 +191,6 @@ export default {
             lpsw:[],
             lconfirm:[],
 
-            active: true,
-            verde: false,
-            rojo: false,
-
             isActiveN: true,
             verdeN: false,
             rojoN: false,
@@ -225,15 +214,6 @@ export default {
             isActiveC: true,
             verdeC: false,
             rojoC: false,
-
-            obligGris:true,
-            obligVermell:false,
-
-            caracGris:true,
-            caracVermell:false,
-
-            numGris:true,
-            numVermell:false,
 
             eobligatori:"* Requerit. ",
             enom:"Mínim 6 caràcters i màxim de 13",
@@ -263,8 +243,7 @@ export default {
             this.$emit('nombreOk',this.lnom);//Envio errors del camp al pare per activar boto Enviar
 
              if (!this.lnom.length){this.isActiveN=false;this.verdeN=true;this.rojoN=false;}
-             if(this.lnom.length > 0){this.isActiveN=false;this.verdeN=false;this.rojoN=true;
-            } 
+             if(this.lnom.length > 0){this.isActiveN=false;this.verdeN=false;this.rojoN=true;} 
         },
 
         //Telefon mòbil
@@ -349,7 +328,6 @@ export default {
 
             //Envio campo password a Confirm para comparar
             //this.$root.$emit('iguales',this.psw);
-
 
             if (!this.lpsw.length){
                     this.isActiveP=false;
@@ -453,23 +431,6 @@ export default {
                     lista.push(this.econfirm);
                 }
             },
-
-            //Class Bootstrap (gris,vermell,verd)
-/*             ValidacionVerde(campo, active, verde, rojo){
-                if (!campo.length){
-                    active=false,
-                    verde=true,
-                    rojo=false;
-                }
-            },
-
-            ValidacionRojo(campo, active, verde, rojo){
-                if(campo.length > 0){
-                    active=false,
-                    verde=false,
-                    rojo=true;
-                }
-            }, */
     },
 
 
