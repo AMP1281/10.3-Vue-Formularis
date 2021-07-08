@@ -6,20 +6,12 @@
 
         <form class="w-75 bg-light border border-secondary p-5 rounded">
 
-            <Test
-             :nombre.sync="nombre" labelNom='Nom:'
-             :mobil.sync="mobil" labelMobil='Mobil:'
-             :codi.sync="codi" labelCodi='Codi Postal:'
-             :mail.sync="mail" labelMail='E.mail:'
-             :psw.sync="psw" labelPassword='Password:'
-             :confirm.sync="confirm" labelConfirm='Confirmar Password:'
-             @nombreOk="nOk=$event"
-             @mobilOk="mOk=$event"
-             @codiOk="cpOk=$event"
-             @mailOk="eOk=$event"
-             @pswOk="pOk=$event"
-             @confirmOk="cOk=$event"
-             />
+            <Test :nombre.sync="nombre" label='Nom:' @nombreOk="nOk=$event"/>
+            <Test :mobil.sync="mobil" label='Mobil:' @mobilOk="mOk=$event"/>
+            <Test :codi.sync="codi" label='Codi Postal:' @codiOk="cpOk=$event"/>
+            <Test :mail.sync="mail" label='E.mail:' @maiOk="eOk=$event"/>
+            <Test :psw.sync="psw" label='Password:' @pswOk="pOk=$event"/>
+            <Test :confirm.sync="confirm" label='Confirmar Password:' @confirmOk="cOk=$event"/>
 
             <button type="submit" @click.prevent="openModal()" data-toggle="modal" data-target="#ModalBootstrap" class="btn btn-primary btn-block mt-5 rounded-pill" :class="{disabled: enableSubmitBtn}">Validar</button>
 

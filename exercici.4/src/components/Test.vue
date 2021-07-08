@@ -1,10 +1,10 @@
 <template>
 <div>
     
-    <!--Nom-->
+
     <div class="input-group">
 
-        <span class="input-group-text font-weight-bold alert-primary">{{ labelNom }}</span>
+        <span class="input-group-text font-weight-bold alert-primary">{{ label }}</span>
             
         <input v-model="compNom" type="text" class= 'form-control' @blur="inlineN" :class="{ active: isActiveN, 'is-valid':verdeN , 'is-invalid':rojoN }"/>
     
@@ -19,10 +19,10 @@
             </div>
 
     </div>
-    <!--End Nom-->
+
 
     <!--Telefon mòbil-->
-    <div class="input-group mt-4">
+    <!-- <div class="input-group mt-4">
 
         <span class="input-group-text font-weight-bold alert-primary">{{ labelMobil }}</span>
 
@@ -38,11 +38,11 @@
 
             </div>
 
-    </div>
+    </div> -->
     <!--End Telefon mòbil-->
 
     <!--Codi postal-->
-    <div class="input-group mt-4">
+    <!-- <div class="input-group mt-4">
 
         <span class="input-group-text font-weight-bold alert-primary">{{ labelCodi}} </span>
 
@@ -58,11 +58,11 @@
 
             </div>
 
-    </div>
+    </div> -->
     <!--End Codi postal-->
 
     <!--E.mail-->
-    <div class="input-group mt-4">
+    <!-- <div class="input-group mt-4">
 
         <span class="input-group-text font-weight-bold alert-primary">{{ labelMail }}</span>
 
@@ -78,11 +78,11 @@
 
                 </div>
 
-    </div>
+    </div> -->
     <!--End E.mail-->
 
     <!--Password-->
-    <div class="input-group mt-4">
+    <!-- <div class="input-group mt-4">
 
         <span class="input-group-text font-weight-bold alert-primary">{{ labelPassword }}</span>
 
@@ -98,11 +98,11 @@
 
             </div>
 
-    </div>
+    </div> -->
     <!--End Password-->
 
     <!--Confirmar Password-->
-    <div class="input-group mt-4">
+    <!-- <div class="input-group mt-4">
 
         <span class="input-group-text font-weight-bold alert-primary">{{ labelConfirm }}</span>
 
@@ -118,7 +118,7 @@
 
             </div>
 
-    </div>
+    </div> -->
     <!--End Confirmar Password-->
 
 </div>
@@ -154,27 +154,7 @@ export default {
             required: true,
             default:'',
         },
-        labelNom:{
-            type: String,
-            required:true,
-        },
-        labelMobil:{
-            type: String,
-            required:true,
-        },
-        labelCodi:{
-            type: String,
-            required:true,
-        },
-        labelMail:{
-            type: String,
-            required:true,
-        },
-        labelPassword:{
-            type: String,
-            required:true,
-        },
-        labelConfirm:{
+        label:{
             type: String,
             required:true,
         },
