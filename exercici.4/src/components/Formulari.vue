@@ -6,12 +6,13 @@
 
         <form class="w-75 bg-light border border-secondary p-5 rounded">
 
-            <Test :nombre.sync="nombre" label='Nom:' @nombreOk="nOk=$event"/>
-            <Test :mobil.sync="mobil" label='Mobil:' @mobilOk="mOk=$event"/>
-            <Test :codi.sync="codi" label='Codi Postal:' @codiOk="cpOk=$event"/>
-            <Test :mail.sync="mail" label='E.mail:' @maiOk="eOk=$event"/>
-            <Test :psw.sync="psw" label='Password:' @pswOk="pOk=$event"/>
-            <Test :confirm.sync="confirm" label='Confirmar Password:' @confirmOk="cOk=$event"/>
+            <Test :nombre.sync="nombrePadre" label='Nom:' @nombreOk="nOk=$event"/>
+            
+            <Test :mobil.sync="mobilPadre" label='Mobil:' @mobilOk="mOk=$event"/> 
+            <Test :codi.sync="codiPadre" label='Codi Postal:' @codiOk="cpOk=$event"/>
+            <Test :mail.sync="mailPadre" label='E.mail:' @maiOk="eOk=$event"/>
+            <Test :psw.sync="pswPadre" label='Password:' @pswOk="pOk=$event"/>
+            <Test :confirm.sync="confirmPadre" label='Confirmar Password:' @confirmOk="cOk=$event"/>
 
             <button type="submit" @click.prevent="openModal()" data-toggle="modal" data-target="#ModalBootstrap" class="btn btn-primary btn-block mt-5 rounded-pill" :class="{disabled: enableSubmitBtn}">Validar</button>
 
@@ -54,12 +55,12 @@ export default {
 
     data(){
         return{
-            nombre:'',
-            mobil:'',
-            codi:'',
-            mail:'',
-            psw:'',
-            confirm:'',
+            nombrePadre:'',
+            mobilPadre:'',
+            codiPadre:'',
+            mailPadre:'',
+            pswPadre:'',
+            confirmPadre:'',
 
             nOk:'',
             mOk:'',
@@ -77,12 +78,12 @@ export default {
     //Desactivo botón hasta que todos los campos esten llenos y Ok(no hay errores en array)
     computed:{
         enableSubmitBtn() {
-            if (this.nombre.length === 0 ||
-                this.mobil.length === 0 ||
-                this.codi.length === 0 ||
-                this.mail.length === 0 ||
-                this.psw.length === 0 ||
-                this.confirm.length === 0){
+            if (this.nombrePadre.length === 0 ||
+                this.mobilPadre.length === 0 ||
+                this.codiPadre.length === 0 ||
+                this.mailPadre.length === 0 ||
+                this.pswPadre.length === 0 ||
+                this.confirmPadre.length === 0){
                     return true;
                 }
 
