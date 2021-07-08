@@ -21,22 +21,6 @@
              @confirmOk="cOk=$event"
              />
 
-
-              <!-- type='text' id='fname' @nombreOk="nOk=$event"/> -->
-<!-- 
-            <Nom :nombre.sync="nombre" label='Nom:' type='text' id='fname' @nombreOk="nOk=$event"/>
-
-            <Mobil :mobil.sync="mobil" label='Telèfon mòbil:' type='text' id='lmobil' @mobilOk="mOk=$event"/>
-
-            <Codi :codi.sync="codi" label='Codi Postal:' type='text' id='lcodiPostal' @codiOk="cpOk=$event"/>
-
-            <Mail :mail.sync="mail" label='E.mail:' type='text' id='lemail' @mailOk="eOk=$event"/>
-
-            <Psw :psw.sync="psw" label='Password:' type='password' id='lpasw' @pswOk="pOk=$event"/>
-
-            <Confirm :confirm.sync="confirm" label='Confirmar Password:' type='password' id='lconfirm' @confirmOk="cOk=$event"/> -->
-        
-
             <button type="submit" @click.prevent="openModal()" data-toggle="modal" data-target="#ModalBootstrap" class="btn btn-primary btn-block mt-5 rounded-pill" :class="{disabled: enableSubmitBtn}">Validar</button>
 
           </form>
@@ -64,13 +48,6 @@
 <script>
 
 import Test from './Test.vue'
-
-//import Nom from './Nom.vue'
-//import Mobil from './Mobil.vue'
-//import Codi from './Codi.vue'
-//import Mail from './Mail.vue'
-//import Psw from './Psw.vue'
-//import Confirm from './Confirm.vue'
 import ModalBootstrap from './ModalBootstrap.vue'
 
 
@@ -79,12 +56,6 @@ export default {
 
     components:{
 
-        //Nom,
-        //Mobil,
-        //Codi,
-        //Mail,
-        //Psw,
-        //Confirm,
         ModalBootstrap,
         Test
     },

@@ -18,7 +18,7 @@
         <!--End Nom-->
 
         <!--Telefon mòbil-->
-        <div class="input-group mt-4">
+        <div class="input-group mt-5">
 
             <span class="input-group-text font-weight-bold alert-primary">{{ labelMobil }}</span>
 
@@ -30,7 +30,7 @@
         <!--End Telefon mòbil-->
 
         <!--Codi postal-->
-        <div class="input-group">
+        <div class="input-group mt-5">
 
             <span class="input-group-text font-weight-bold alert-primary">{{ labelCodi}} </span>
 
@@ -42,7 +42,7 @@
         <!--End Codi postal-->
 
         <!--E.mail-->
-        <div class="input-group">
+        <div class="input-group mt-5">
 
             <span class="input-group-text font-weight-bold alert-primary">{{ labelMail }}</span>
 
@@ -54,7 +54,7 @@
         <!--End E.mail-->
 
         <!--Password-->
-        <div class="input-group">
+        <div class="input-group mt-5">
 
             <span class="input-group-text font-weight-bold alert-primary">{{ labelPassword }}</span>
 
@@ -63,15 +63,10 @@
         </div>
 
             <small class="text-danger" v-for="(errorp, i) in lpsw" :key="i"> {{ errorp }} </small>
-
-<!--             <small :class="{'text-secondary':obligGris, 'text-danger':obligVermell}">* Requerit. </small>
-            <small :class="{'text-secondary':caracGris, 'text-danger':caracVermell}">Mínim de 6 i màxim de 13 dígits. </small>
-            <small :class="{'text-secondary':numGris, 'text-danger':numVermell}">Ha de contenir minúscules. </small>
-            <small :class="{'text-secondary':mayGris, 'text-danger':mayVermell}">Ha de contenir majúscules. </small> -->
         <!--End Password-->
 
         <!--Confirmar Password-->
-        <div class="input-group">
+        <div class="input-group mt-5">
 
         <span class="input-group-text font-weight-bold alert-primary">{{ labelConfirm }}</span>
 
@@ -117,10 +112,6 @@ export default {
             required: true,
             default:'',
         },
-        id:{
-            type: String,
-            required: true,
-        },
         labelNom:{
             type: String,
             required:true,
@@ -145,19 +136,13 @@ export default {
             type: String,
             required:true,
         },
-        type:{
-            type:String,
-            required:true,
-        },
+
     },
 
     data(){
         return{
 
-            anom:[],
             lnom:[],
-
-            amobil:[],
             lmobil:[],
             lcodi:[],
             lmail:[],
@@ -265,7 +250,7 @@ export default {
             this.mincodi(this.codi, this.lcodi);
             this.numeros(this.codi,this.lcodi);
 
-            this.$emit('codiOk',this.lcodi);//Envio errors del camp al pare per activar boto Enviar
+            this.$emit('codiOk',this.lcodi);
 
             if (!this.lcodi.length){
                     this.isActiveCP=false;
@@ -287,7 +272,7 @@ export default {
             this.obligatori(this.mail,this.lmail);
             this.email(this.mail,this.lmail);
 
-            this.$emit('mailOk',this.lmail);//Envio errors del camp al pare per activar boto Enviar
+            this.$emit('mailOk',this.lmail);
 
             if (!this.lmail.length){
                     this.isActiveE=false;
@@ -311,7 +296,7 @@ export default {
             this.may(this.psw,this.lpsw);
             this.min(this.psw,this.lpsw);
 
-            this.$emit('pswOk',this.lpsw);//Envio errors del camp al pare per activar boto Enviar
+            this.$emit('pswOk',this.lpsw);
 
             //Envio campo password a Confirm para comparar
             //this.$root.$emit('iguales',this.psw);
@@ -337,7 +322,7 @@ export default {
             this.obligatori(this.confirm,this.lconfirm);
             this.igual(this.confirm,this.lconfirm,this.psw);
 
-            this.$emit('confirmOk',this.lconfirm);//Envio errors del camp al pare per activar boto Enviar
+            this.$emit('confirmOk',this.lconfirm);
 
             //Recibo campo password para poder comparar
             //mounted(){
@@ -358,50 +343,6 @@ export default {
                     this.rojoC=true;
                 }
         },
-
-
-
-
-
-
-
-/*             if(this.nombre==""){
-                this.lnom.push("Aquest camp es obligatori");
-                this.obligGris=false;
-                this.obligVermell=true;
-            }else{
-                this.obligGris=true;
-                this.obligVermell=false;
-            }
-            if(this.nombre.length < 6 || this.nombre.length > 13){ 
-                this.lnom.push("Aquest camp ha de contenir entre 6 i 13 caràct");
-                this.caracGris=false;
-                this.caracVermell=true;
-            }else{
-                this.caracGris=true;
-                this.caracVermell=false;
-            }
-            if(/[0-9]/.test(this.nombre)){ 
-                this.lnom.push("El seu nom no pot contenir números.");
-                this.numGris=false;
-                this.numVermell=true;
-            }else{
-                this.numGris=true;
-                this.numVermell=false;
-            }
-            if (!this.lnom.length){
-                this.isActive=false;
-                this.verde=true;
-                this.rojo=false;
-            }
-            if(this.lnom.length > 0){
-                this.isActive=false;
-                this.verde=false;
-                this.rojo=true;
-            } */
-
-
-
 
              //Validar camps obligatoris
             obligatori(campo,lista){
