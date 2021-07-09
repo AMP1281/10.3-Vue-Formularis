@@ -6,13 +6,12 @@
 
         <form class="w-75 bg-light border border-secondary p-5 rounded">
 
-            <Test :nombre.sync="nombrePadre" label='Nom:' @nombreOk="nOk=$event"/>
-            
-            <Test :mobil.sync="mobilPadre" label='Mobil:' @mobilOk="mOk=$event"/> 
-            <Test :codi.sync="codiPadre" label='Codi Postal:' @codiOk="cpOk=$event"/>
-            <Test :mail.sync="mailPadre" label='E.mail:' @maiOk="eOk=$event"/>
-            <Test :psw.sync="pswPadre" label='Password:' @pswOk="pOk=$event"/>
-            <Test :confirm.sync="confirmPadre" label='Confirmar Password:' @confirmOk="cOk=$event"/>
+            <Test label='Nom:' @nombreOk="nOk=$event"/>
+            <Test label='Mobil:' @mobilOk="mOk=$event"/> 
+            <Test label='Codi Postal:' @codiOk="cpOk=$event"/>
+            <Test label='E.mail:' @maiOk="eOk=$event"/>
+            <Test label='Password:' @pswOk="pOk=$event"/>
+            <Test label='Confirmar Password:' @confirmOk="cOk=$event"/>
 
             <button type="submit" @click.prevent="openModal()" data-toggle="modal" data-target="#ModalBootstrap" class="btn btn-primary btn-block mt-5 rounded-pill" :class="{disabled: enableSubmitBtn}">Validar</button>
 
@@ -55,6 +54,9 @@ export default {
 
     data(){
         return{
+            value:'',
+            searchText:'',
+
             nombrePadre:'',
             mobilPadre:'',
             codiPadre:'',
