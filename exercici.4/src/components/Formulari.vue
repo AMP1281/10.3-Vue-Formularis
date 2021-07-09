@@ -9,9 +9,9 @@
             <Test label='Nom:' @nombreOk="nOk=$event"/>
             <Test label='Mobil:' @mobilOk="mOk=$event"/> 
             <Test label='Codi Postal:' @codiOk="cpOk=$event"/>
-            <Test label='E.mail:' @maiOk="eOk=$event"/>
+            <Test label='E.mail:' @mailOk="eOk=$event"/>
             <Test label='Password:' @pswOk="pOk=$event"/>
-            <Test label='Confirmar Password:' @confirmOk="cOk=$event"/>
+            <Test label='Confirmar Password:' @confirmOk="cOk=$event" :confPadrepsw="pOk.valorPsw"/><!--Envio psw en :confPadrepsw-->
 
             <button type="submit" @click.prevent="openModal()" data-toggle="modal" data-target="#ModalBootstrap" class="btn btn-primary btn-block mt-5 rounded-pill" :class="{disabled: enableSubmitBtn}">Validar</button>
 
@@ -19,21 +19,18 @@
 
         <ModalBootstrap v-if="showModal" @close="showModal=false"
 
-            :nombre= 'nombre'
-            :mobil= 'mobil'
-            :codi= 'codi'
-            :mail= 'mail'
-            :psw= 'psw'
-            :confirm= 'confirm'>
+            :nombre= 'nOk.valorNombre'
+            :mobil= 'mOk.valorMobil'
+            :codi= 'cpOk.valorCodi'
+            :mail= 'eOk.valorMail'
+            :psw= 'pOk.valorPsw'
+            :confirm= 'cOk.valorConf'>
 
         </ModalBootstrap>
 
     </div>
 
-
-
 </div>
-
 
 </template>
 
@@ -42,34 +39,44 @@
 import Test from './Test.vue'
 import ModalBootstrap from './ModalBootstrap.vue'
 
-
 export default {
     name: 'Formulari',
 
     components:{
-
         ModalBootstrap,
         Test
     },
 
     data(){
         return{
+            pswPadreConf:'',
+
             value:'',
-            searchText:'',
 
-            nombrePadre:'',
-            mobilPadre:'',
-            codiPadre:'',
-            mailPadre:'',
-            pswPadre:'',
-            confirmPadre:'',
-
-            nOk:'',
-            mOk:'',
-            cpOk:'',
-            eOk:'',
-            pOk:'',
-            cOk:'',
+            nOk:{
+                arrayNombre:'',
+                valorNombre:''
+            },
+            mOk:{
+                arrayMobil:'',
+                valorMobil:''
+            },
+            cpOk:{
+                arrayCodi:'',
+                valorCodi:''
+            },
+            eOk:{
+                arrayMail:'',
+                valorMail:''
+            },
+            pOk:{
+                arrayPsw:'',
+                valorPsw:''
+            },
+            cOk:{
+                arrayConf:'',
+                valorConf:''
+            },
 
             disabled: true,
 
@@ -80,21 +87,21 @@ export default {
     //Desactivo botón hasta que todos los campos esten llenos y Ok(no hay errores en array)
     computed:{
         enableSubmitBtn() {
-            if (this.nombrePadre.length === 0 ||
-                this.mobilPadre.length === 0 ||
-                this.codiPadre.length === 0 ||
-                this.mailPadre.length === 0 ||
-                this.pswPadre.length === 0 ||
-                this.confirmPadre.length === 0){
+            if (this.nOk.valorNombre.length === 0 ||
+                this.mOk.valorMobil.length === 0 ||
+                this.cpOk.valorCodi.length === 0 ||
+                this.eOk.valorMail.length === 0 ||
+                this.pOk.valorPsw.length === 0 ||
+                this.cOk.valorConf.length === 0){
                     return true;
                 }
 
-            if (this.nOk.length === 0 &&
-                this.mOk.length === 0 &&
-                this.cpOk.length === 0 &&
-                this.eOk.length === 0 &&
-                this.pOk.length === 0 &&
-                this.cOk.length === 0)
+            if (this.nOk.arrayNombre.length === 0 &&
+                this.mOk.arrayMobil.length === 0 &&
+                this.cpOk.arrayCodi.length === 0 &&
+                this.eOk.arrayMail.length === 0 &&
+                this.pOk.arrayPsw.length === 0 &&
+                this.cOk.arrayConf.length === 0)
                 {
                 return false;
             }else{
@@ -117,7 +124,6 @@ export default {
 
      },
 }
-
 
 </script>
 

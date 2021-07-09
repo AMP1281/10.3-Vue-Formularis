@@ -1,7 +1,6 @@
 <template>
 <div>
     
-
     <div class="input-group mt-4">
 
         <span class="input-group-text font-weight-bold alert-primary">{{ label }}</span>
@@ -20,7 +19,6 @@
 
     </div>
 
-
 </div>
 
 </template>
@@ -28,10 +26,11 @@
 <script>
 export default {
 
-    props:  ['label'],
+    props:  ['label','confPadrepsw'],
 
     data(){
         return{
+
             value:'',
 
             lerrores:[],
@@ -73,99 +72,85 @@ export default {
             this.lconfirm=[];
 
             //Nom
-
             if(this.label == 'Nom:'){
 
+                //Validacio
                 this.obligatori(this.value,this.lnom);
                 this.minMax(this.value,this.lnom);
                 this.lletres(this.value,this.lnom);
 
-                this.$emit('nombreOk',this.lnom);//Envio errors del camp al pare per activar boto Enviar
+                this.$emit('nombreOk',{arrayNombre:this.lnom, valorNombre:this.value});//Envio errors i valor del camp al pare per activar boto Enviar
 
-                !this.lnom.length? ((this.isActive=false), (this.verde=true), (this.rojo=false)) : ((this.isActive=false),(this.verde=false),(this.rojo=true));
+                !this.lnom.length? ((this.isActive=false), (this.verde=true), (this.rojo=false)) : ((this.isActive=false),(this.verde=false),(this.rojo=true));//Activo class de Bootstrap invalid o valid depenent si hi han errors en el array
 
-                this.lerrores=this.lnom
+                this.lerrores=this.lnom//Igualo lerrores a lnom pq en cada input mostri els errors corresponents.
             }
 
             //Mobil
-
             if(this.label == 'Mobil:'){
 
-            this.obligatori(this.value,this.lmobil);
-            this.minTel(this.value,this.lmobil);
-            this.numeros(this.value,this.lmobil);
+                this.obligatori(this.value,this.lmobil);
+                this.minTel(this.value,this.lmobil);
+                this.numeros(this.value,this.lmobil);
 
-            this.$emit('mobilOk',this.lmobil);
+                this.$emit('mobilOk',{arrayMobil:this.lmobil, valorMobil:this.value});
 
-            !this.lmobil.length? ((this.isActive=false), (this.verde=true), (this.rojo=false)) : ((this.isActive=false),(this.verde=false),(this.rojo=true));
-            
-            this.lerrores=this.lmobil
+                !this.lmobil.length? ((this.isActive=false), (this.verde=true), (this.rojo=false)) : ((this.isActive=false),(this.verde=false),(this.rojo=true));
+                
+                this.lerrores=this.lmobil
             }
-        //Codi postal
-        if(this.label == 'Codi Postal:'){
+            //Codi postal
+            if(this.label == 'Codi Postal:'){
 
-            this.obligatori(this.value,this.lcodi);
-            this.mincodi(this.value, this.lcodi);
-            this.numeros(this.value,this.lcodi);
+                this.obligatori(this.value,this.lcodi);
+                this.mincodi(this.value, this.lcodi);
+                this.numeros(this.value,this.lcodi);
 
-            this.$emit('codiOk',this.lcodi);
+                this.$emit('codiOk',{arrayCodi:this.lcodi,valorCodi:this.value});
 
-            !this.lcodi.length? ((this.isActive=false), (this.verde=true), (this.rojo=false)) : ((this.isActive=false),(this.verde=false),(this.rojo=true));
+                !this.lcodi.length? ((this.isActive=false), (this.verde=true), (this.rojo=false)) : ((this.isActive=false),(this.verde=false),(this.rojo=true));
 
-            this.lerrores=this.lcodi
-        }
-        //E.mail
-        if(this.label == 'E.mail:'){
+                this.lerrores=this.lcodi
+            }
+            //E.mail
+                if(this.label == 'E.mail:'){
 
-            this.obligatori(this.value,this.lmail);
-            this.email(this.value,this.lmail);
+                this.obligatori(this.value,this.lmail);
+                this.email(this.value,this.lmail);
 
-            this.$emit('mailOk',this.lmail);
+                this.$emit('mailOk',{arrayMail:this.lmail, valorMail:this.value});
 
-            !this.lmail.length? ((this.isActive=false), (this.verde=true), (this.rojo=false)) : ((this.isActive=false),(this.verde=false),(this.rojo=true));
+                !this.lmail.length? ((this.isActive=false), (this.verde=true), (this.rojo=false)) : ((this.isActive=false),(this.verde=false),(this.rojo=true));
 
-            this.lerrores=this.lmail
+                this.lerrores=this.lmail
+            }
+            //Password
+            if(this.label == 'Password:'){
 
-        }
-        //Password
-        if(this.label == 'Password:'){
+                this.obligatori(this.value,this.lpsw);
+                this.minMax(this.value,this.lpsw);
+                this.may(this.value,this.lpsw);
+                this.min(this.value,this.lpsw);
 
-            this.obligatori(this.value,this.lpsw);
-            this.minMax(this.value,this.lpsw);
-            this.may(this.value,this.lpsw);
-            this.min(this.value,this.lpsw);
+                this.$emit('pswOk',{arrayPsw:this.lpsw, valorPsw:this.value});
 
-            this.$emit('pswOk',this.lpsw);
+                !this.lpsw.length? ((this.isActive=false), (this.verde=true), (this.rojo=false)) : ((this.isActive=false),(this.verde=false),(this.rojo=true));
 
-            !this.lpsw.length? ((this.isActive=false), (this.verde=true), (this.rojo=false)) : ((this.isActive=false),(this.verde=false),(this.rojo=true));
+                this.lerrores=this.lpsw
+            }
+            //Confirmar Password
+            if(this.label == 'Confirmar Password:'){
 
-            this.lerrores=this.lpsw
+                this.obligatori(this.value,this.lconfirm);
+                this.igual(this.value,this.lconfirm,this.confPadrepsw);//Utilizo el prop recibido del padre confPadrepsw para comparar
 
-            //Envio campo password a Confirm para comparar
-            //this.$root.$emit('iguales',this.psw);
+                this.$emit('confirmOk',{arrayConf:this.lconfirm, valorConf:this.value});
 
-        }
-        //Confirmar Password
-        if(this.label == 'Confirmar Password:'){
+                !this.lconfirm.length? ((this.isActive=false), (this.verde=true), (this.rojo=false)) : ((this.isActive=false),(this.verde=false),(this.rojo=true));
 
-            this.obligatori(this.value,this.lconfirm);
-            this.igual(this.value,this.lconfirm,this.psw);
-
-            this.$emit('confirmOk',this.lconfirm);
-
-            !this.lconfirm.length? ((this.isActive=false), (this.verde=true), (this.rojo=false)) : ((this.isActive=false),(this.verde=false),(this.rojo=true));
-
-            this.lerrores=this.lconfirm
-
-            //Recibo campo password para poder comparar
-            //mounted(){
-            //  this.$root.$on('iguales',(message) => {
-            //  this.campoPsw = message;
-            //  });
-            //},
-
-        }
-        },
+                this.lerrores=this.lconfirm;
+            }
+            },
              //Validar camps obligatoris
             obligatori(campo,lista){
                 if(!campo){
