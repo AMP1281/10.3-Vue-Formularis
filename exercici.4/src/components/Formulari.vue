@@ -6,7 +6,7 @@
 
         <form class="w-75 bg-light border border-secondary p-5 rounded">
 
-            <Test label='Nom:' @nombreOk="nOk=$event"/>
+            <Test label='Nom:' @nombreOk="nOk=$event"/><!--Rebo errors i valor del fill en el @-->
             <Test label='Mobil:' @mobilOk="mOk=$event"/> 
             <Test label='Codi Postal:' @codiOk="cpOk=$event"/>
             <Test label='E.mail:' @mailOk="eOk=$event"/>
