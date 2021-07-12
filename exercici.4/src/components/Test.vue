@@ -35,13 +35,6 @@ export default {
 
             lerrores:[],
 
-            lnom:[],
-            lmobil:[],
-            lcodi:[],
-            lmail:[],
-            lpsw:[],
-            lconfirm:[],
-
             isActive: true,
             verde: false,
             rojo: false,
@@ -64,151 +57,140 @@ export default {
 
         inline(){
 
-            this.lnom=[];
-            this.lmobil=[];
-            this.lcodi=[];
-            this.lmail=[];
-            this.lpsw=[];
-            this.lconfirm=[];
+            this.lerrores=[];
 
             //Nom
             if(this.label == 'Nom:'){
 
                 //Validacio
-                this.obligatori(this.value,this.lnom);
-                this.minMax(this.value,this.lnom);
-                this.lletres(this.value,this.lnom);
+                this.obligatori(this.value);
+                this.minMax(this.value);
+                this.lletres(this.value);
 
-                this.$emit('nombreOk',{arrayNombre:this.lnom, valorNombre:this.value});//Envio errors i valor del camp al pare per activar boto Enviar
+                this.$emit('nombreOk',{arrayNombre:this.lerrores, valorNombre:this.value});//Envio errors i valor del camp al pare per activar boto Enviar
 
-                !this.lnom.length? ((this.isActive=false), (this.verde=true), (this.rojo=false)) : ((this.isActive=false),(this.verde=false),(this.rojo=true));//Activo class de Bootstrap invalid o valid depenent si hi han errors en el array
+                !this.lerrores.length? ((this.isActive=false), (this.verde=true), (this.rojo=false)) : ((this.isActive=false),(this.verde=false),(this.rojo=true));//Activo class de Bootstrap invalid o valid depenent si hi han errors en el array
 
-                this.lerrores=this.lnom//Igualo lerrores a lnom pq en cada input mostri els errors corresponents.
             }
 
             //Mobil
             if(this.label == 'Mobil:'){
 
-                this.obligatori(this.value,this.lmobil);
-                this.minTel(this.value,this.lmobil);
-                this.numeros(this.value,this.lmobil);
+                this.obligatori(this.value);
+                this.minTel(this.value);
+                this.numeros(this.value);
 
-                this.$emit('mobilOk',{arrayMobil:this.lmobil, valorMobil:this.value});
+                this.$emit('mobilOk',{arrayMobil:this.lerrores, valorMobil:this.value});
 
-                !this.lmobil.length? ((this.isActive=false), (this.verde=true), (this.rojo=false)) : ((this.isActive=false),(this.verde=false),(this.rojo=true));
+                !this.lerrores.length? ((this.isActive=false), (this.verde=true), (this.rojo=false)) : ((this.isActive=false),(this.verde=false),(this.rojo=true));
                 
-                this.lerrores=this.lmobil
             }
             //Codi postal
             if(this.label == 'Codi Postal:'){
 
-                this.obligatori(this.value,this.lcodi);
-                this.mincodi(this.value, this.lcodi);
-                this.numeros(this.value,this.lcodi);
+                this.obligatori(this.value);
+                this.mincodi(this.value);
+                this.numeros(this.value);
 
-                this.$emit('codiOk',{arrayCodi:this.lcodi,valorCodi:this.value});
+                this.$emit('codiOk',{arrayCodi:this.lerrores,valorCodi:this.value});
 
-                !this.lcodi.length? ((this.isActive=false), (this.verde=true), (this.rojo=false)) : ((this.isActive=false),(this.verde=false),(this.rojo=true));
+                !this.lerrores.length? ((this.isActive=false), (this.verde=true), (this.rojo=false)) : ((this.isActive=false),(this.verde=false),(this.rojo=true));
 
-                this.lerrores=this.lcodi
             }
             //E.mail
                 if(this.label == 'E.mail:'){
 
-                this.obligatori(this.value,this.lmail);
-                this.email(this.value,this.lmail);
+                this.obligatori(this.value);
+                this.email(this.value);
 
-                this.$emit('mailOk',{arrayMail:this.lmail, valorMail:this.value});
+                this.$emit('mailOk',{arrayMail:this.lerrores, valorMail:this.value});
 
-                !this.lmail.length? ((this.isActive=false), (this.verde=true), (this.rojo=false)) : ((this.isActive=false),(this.verde=false),(this.rojo=true));
+                !this.lerrores.length? ((this.isActive=false), (this.verde=true), (this.rojo=false)) : ((this.isActive=false),(this.verde=false),(this.rojo=true));
 
-                this.lerrores=this.lmail
             }
             //Password
             if(this.label == 'Password:'){
 
-                this.obligatori(this.value,this.lpsw);
-                this.minMax(this.value,this.lpsw);
-                this.may(this.value,this.lpsw);
-                this.min(this.value,this.lpsw);
+                this.obligatori(this.value);
+                this.minMax(this.value);
+                this.may(this.value);
+                this.min(this.value);
 
-                this.$emit('pswOk',{arrayPsw:this.lpsw, valorPsw:this.value});
+                this.$emit('pswOk',{arrayPsw:this.lerrores, valorPsw:this.value});
 
-                !this.lpsw.length? ((this.isActive=false), (this.verde=true), (this.rojo=false)) : ((this.isActive=false),(this.verde=false),(this.rojo=true));
+                !this.lerrores.length? ((this.isActive=false), (this.verde=true), (this.rojo=false)) : ((this.isActive=false),(this.verde=false),(this.rojo=true));
 
-                this.lerrores=this.lpsw
             }
             //Confirmar Password
             if(this.label == 'Confirmar Password:'){
 
-                this.obligatori(this.value,this.lconfirm);
-                this.igual(this.value,this.lconfirm,this.confPadrepsw);//Utilizo el prop recibido del padre confPadrepsw para comparar
+                this.obligatori(this.value);
+                this.igual(this.value,this.confPadrepsw);//Utilizo el prop recibido del padre confPadrepsw para comparar
 
-                this.$emit('confirmOk',{arrayConf:this.lconfirm, valorConf:this.value});
+                this.$emit('confirmOk',{arrayConf:this.lerrores, valorConf:this.value});
 
-                !this.lconfirm.length? ((this.isActive=false), (this.verde=true), (this.rojo=false)) : ((this.isActive=false),(this.verde=false),(this.rojo=true));
+                !this.lerrores.length? ((this.isActive=false), (this.verde=true), (this.rojo=false)) : ((this.isActive=false),(this.verde=false),(this.rojo=true));
 
-                this.lerrores=this.lconfirm;
             }
             },
              //Validar camps obligatoris
-            obligatori(campo,lista){
+            obligatori(campo){
                 if(!campo){
-                    lista.push(this.eobligatori);
+                    this.lerrores.push(this.eobligatori);
                 } 
             },
             //Validar min max dígits 6-13
-            minMax(campo,lista){ 
+            minMax(campo){ 
                 if (campo.length < 6 || campo.length > 13){ 
-                    lista.push(this.enom);
+                    this.lerrores.push(this.enom);
                 }
             },
             //Validar min max dígits 9
-            minTel(campo,lista){
+            minTel(campo){
                 if(campo.length < 9 || campo.length > 9){ 
-                    lista.push(this.etelf);
+                    this.lerrores.push(this.etelf);
                 }
             },
             //Validar min max dígits 5
-            mincodi(campo,lista){
+            mincodi(campo){
                 if(campo.length < 5 || campo.length > 5){ 
-                    lista.push(this.ecodi);
+                    this.lerrores.push(this.ecodi);
                 }
             },
             //Validar mayuscules obligatories
-            may(campo,lista){
+            may(campo){
                 if (!/[A-Z]/.test(campo)){
-                    lista.push(this.emajus);
+                    this.lerrores.push(this.emajus);
                 }
             },
             //Validar minuscules obligatories
-            min(campo,lista){
+            min(campo){
                 if (!/[a-z]/.test(campo)){
-                    lista.push(this.eminus);
+                    this.lerrores.push(this.eminus);
                 }
             },
             //Validar que contingui lletres
-            lletres(campo,lista){
+            lletres(campo){
                 if(/[0-9]/.test(campo)){
-                    lista.push(this.enomnumeros);
+                    this.lerrores.push(this.enomnumeros);
                 }
             },
             //Validar que contingui números
-            numeros(campo,lista){
+            numeros(campo){
                 if(!/[0-9]/.test(campo)){
-                    lista.push(this.enumeros);
+                    this.lerrores.push(this.enumeros);
                 }
             },
             //Validar format e.mail
-            email(campo,lista){
+            email(campo){
                 if (!/[\w._-]+@[\wñ._-]+(?:\.[\w]+)+/.test(campo)) {
-                    lista.push(this.eEmail);
+                    this.lerrores.push(this.eEmail);
                 }
             },
             //Validar que dos inputs siguin identics
-            igual(campo,lista,c){
+            igual(campo,c){
                 if(c != campo){
-                    lista.push(this.econfirm);
+                    this.lerrores.push(this.econfirm);
                 }
             },
     },
